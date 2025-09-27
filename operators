@@ -1,0 +1,28 @@
+MongoDB Operators
+1. Comparison Operators
+$eq   // equal
+$ne   // not equal
+$gt   // greater than
+$lt   // less than
+$gte  // greater than or equal
+$lte  // less than or equal
+$in   // matches any in array
+$nin  // not in array
+
+2. Logical Operators
+$and
+$or
+$not
+$nor
+
+3. Update Operators
+$set      // set field value
+$inc      // increment value
+$unset    // remove field
+$rename   // rename field
+
+4. Array Operators
+$push     // add item to array
+$pull     // remove item from array
+$pop      // remove first/last item
+$addToSet // add item only if it doesn’t exist
