@@ -1,0 +1,78 @@
+Quick Recap
+
+Basic → find(), find(condition)
+
+Comparison → $gt, $lt, $gte, $lte, $eq, $ne
+
+Logical → $or, $and, $not
+
+Array match → $in, $nin
+
+Regex → /^pattern/
+
+Sort, limit, skip → organize results
+
+1️⃣ Get All Documents
+db.users.find()
+
+2️⃣ Find with Condition
+db.users.find({ city: "Bangalore" })
+
+3️⃣ Show Only Certain Fields
+db.users.find({ age: 22 }, { name: 1, city: 1 })
+✅ Shows only name and city fields for age = 22.
+
+4️⃣Comparison Queries
+
+$eq → equal
+
+$ne → not equal
+
+$gt → greater than
+
+$lt → less than
+
+$gte → greater than or equal
+
+$lte → less than or equal
+
+👉 Example:
+
+db.users.find({ age: { $gt: 20 } })      // age > 20
+db.users.find({ age: { $lt: 30 } })      // age < 30
+db.users.find({ age: { $gte: 18 } })     // age >= 18
+db.users.find({ age: { $ne: 22 } })      // age != 22
+
+
+5️⃣Logical Queries
+
+$or → either condition
+
+$and → both conditions
+
+$not → opposite condition
+
+$nor → none of the conditions
+
+👉 Example:
+
+db.users.find({
+  $or: [ { city: "Bangalore" }, { age: { $lt: 23 } } ]
+})
+
+6️⃣ IN & NOT IN
+db.users.find({ city: { $in: ["Bangalore", "Chennai"] } })
+db.users.find({ city: { $nin: ["Delhi", "Mumbai"] } })
+
+
+7️⃣ Pattern Matching (Regex)
+db.users.find({ name: /^V/ })
+✅ Finds users whose name starts with "V".
+
+8️⃣ Sorting
+db.users.find().sort({ age: 1 })   // ascending
+db.users.find().sort({ age: -1 })  // descending
+
+9️⃣ Limiting & Skipping
+db.users.find().limit(2)    // first 2 results
+db.users.find().skip(2)     // skip first 2 results
