@@ -1,0 +1,59 @@
+What is Indexing in MongoDB?
+
+An index is like the index of a book.
+
+Instead of scanning every page (document), MongoDB uses an index to quickly find data.
+
+Without an index → MongoDB does a COLLECTION SCAN (checks every document).
+
+With an index → MongoDB does a INDEX SCAN (faster).
+
+
+🔹 How to Create Index
+db.collection.createIndex({ field: 1 })
+
+
+1 → ascending order
+
+-1 → descending order
+
+
+🔹 Types of Indexes
+
+1️⃣ Single Field Index
+Index on one field.
+
+db.users.createIndex({ age: 1 })
+
+
+2️⃣ Compound Index
+Index on multiple fields.
+
+db.users.createIndex({ age: 1, city: -1 })
+
+
+👉 Useful when queries use both age and city.
+
+3️⃣ Unique Index
+Ensures values are unique (like primary key).
+
+db.users.createIndex({ email: 1 }, { unique: true })
+
+
+4️⃣ Text Index
+For searching text.
+
+db.articles.createIndex({ content: "text" })
+db.articles.find({ $text: { $search: "MongoDB" } })
+
+
+5️⃣ Hashed Index
+For sharding/distribution of data.
+
+db.users.createIndex({ userId: "hashed" })
+
+🔹 How to View Indexes
+db.users.getIndexes()
+
+🔹 How to Drop Index
+db.users.dropIndex("name_1")
