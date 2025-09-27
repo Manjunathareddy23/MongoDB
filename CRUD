@@ -1,0 +1,41 @@
+#INSERT/CREATE
+// Insert one document
+db.users.insertOne({ name: "Manju", age: 22, city: "Bangalore" });
+
+// Insert many documents
+db.users.insertMany([
+  { name: "Vaishnavi", age: 21, city: "Hyderabad" },
+  { name: "Ravi", age: 25, city: "Chennai" }
+]);
+
+
+#READ
+// Find all
+db.users.find();
+
+// Find with condition
+db.users.find({ city: "Bangalore" });
+
+// Find specific fields
+db.users.find({ age: 22 }, { name: 1, city: 1 });
+
+
+#UPDATE
+// Update one
+db.users.updateOne(
+  { name: "Manju" }, 
+  { $set: { city: "Mumbai" } }
+);
+
+// Update many
+db.users.updateMany(
+  { city: "Hyderabad" }, 
+  { $set: { city: "Delhi" } }
+);
+
+#DELETE
+// Delete one
+db.users.deleteOne({ name: "Ravi" });
+
+// Delete many
+db.users.deleteMany({ city: "Delhi" });
